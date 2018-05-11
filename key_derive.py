@@ -18,3 +18,6 @@ def combine_derive(shares, salt="", length=32):
 def derive_passphrase(key, salt="", words=4):
     return m.to_mnemonic(derive(key, salt)).split(" ")[:words]
 
+def from_words(seed_words, salt="", words=4):
+    k = m.to_entropy(seed_words)
+    return derive_passphrase(str(k), salt, words)
