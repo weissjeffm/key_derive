@@ -2,6 +2,8 @@ import scrypt
 import mnemonic
 from mnemonic import shamir
 
+#updated for python 3
+
 m = mnemonic.Mnemonic("english")
 s = shamir.Shamir("english")
 
@@ -20,4 +22,4 @@ def derive_passphrase(key, salt="", words=4):
 
 def from_words(seed_words, salt="", words=4):
     k = m.to_entropy(seed_words)
-    return derive_passphrase(str(k), salt, words)
+    return derive_passphrase(bytes(k), salt, words)
